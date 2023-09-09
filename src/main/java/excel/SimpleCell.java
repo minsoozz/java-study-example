@@ -3,8 +3,6 @@ package excel;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.concurrent.Flow.*;
-
 public class SimpleCell implements Publisher<Integer>, Subscriber<Integer> {
     private int value = 0;
     private String name;
@@ -20,6 +18,7 @@ public class SimpleCell implements Publisher<Integer>, Subscriber<Integer> {
     private void notifyAllSubscribers() {
         subscribers.forEach(subscriber -> subscriber.onNext(value));
     }
+
     @Override
     public void subscribe(Subscriber<? super Integer> subscriber) {
         subscribers.add(subscriber);
